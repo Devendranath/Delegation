@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         print("Button PRessed on top of Buttons View")
         accountInfo.balance = 2000
     }
-    
+     
     @objc func rightButtonPressed() {
         print("Button PRessed on top of Buttons View")
 //        accountInfo.address = "Banglore"
