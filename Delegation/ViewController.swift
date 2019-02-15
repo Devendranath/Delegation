@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     let accountInfo = AccountInfo()
-    
+    let buttonsView = ButtonsView()
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -18,8 +18,6 @@ class ViewController: UIViewController {
         
         accountInfo.addObserver(self, forKeyPath: "address", options: [.new ], context: nil)
         
-        
-        let buttonsView = ButtonsView()
         buttonsView.delegate = self
         buttonsView.backgroundColor = UIColor.red
         buttonsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300)
@@ -37,12 +35,19 @@ class ViewController: UIViewController {
     @objc func leftButtonPressed() {
         print("Button PRessed on top of Buttons View")
         accountInfo.balance = 2000
+        UIView.animate(withDuration: 1) {
+            self.buttonsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300)
+        }
     }
-     
+    
     @objc func rightButtonPressed() {
         print("Button PRessed on top of Buttons View")
 //        accountInfo.address = "Banglore"
         accountInfo.setValue("Mumbai", forKey: "address")
+        
+        UIView.animate(withDuration: 1) {
+         self.buttonsView.frame = CGRect(x: 0, y: 400, width: self.view.frame.size.width, height: 300)
+        }
     }
 }
 
